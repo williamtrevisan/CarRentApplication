@@ -20,6 +20,6 @@ categoriesRoutes.get('/', (request, response) => {
     const allCategories = categoriesRepository.list();
 
     return response.json(allCategories);
-})
+});
 
 export { categoriesRoutes };
