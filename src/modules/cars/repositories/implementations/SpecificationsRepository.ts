@@ -1,28 +1,33 @@
-import { Specification } from '../../models/Specification';
-import { ICreateSpecificationDTO, ISpecificationsRepository } from "../ISpecificationsRepository";
+import { Specification } from "../../models/Specification";
+import {
+  ICreateSpecificationDTO,
+  ISpecificationsRepository,
+} from "../ISpecificationsRepository";
 
 class SpecificationsRepository implements ISpecificationsRepository {
-    private specifications: Specification[];
+  private specifications: Specification[];
 
-    constructor() {
-        this.specifications = [];
-    }
+  constructor() {
+    this.specifications = [];
+  }
 
-    create({ name, description }: ICreateSpecificationDTO): void {
-        const specification = new Specification();
+  create({ name, description }: ICreateSpecificationDTO): void {
+    const specification = new Specification();
 
-        Object.assign(specification, {
-            name,
-            description,
-            created_at: new Date()
-        });
+    Object.assign(specification, {
+      name,
+      description,
+      created_at: new Date(),
+    });
 
-        this.specifications.push(specification);
-    }
+    this.specifications.push(specification);
+  }
 
-    findByName(name: string): Specification | undefined {
-        return this.specifications.find((specification) => specification.name === name);
-    }
+  findByName(name: string): Specification | undefined {
+    return this.specifications.find(
+      (specification) => specification.name === name
+    );
+  }
 }
 
 export { SpecificationsRepository };

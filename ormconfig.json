@@ -1,0 +1,8 @@
+{
+  "type": "postgres",
+  "port": 5432,
+  "host": "host.docker.internal",
+  "username": "root",
+  "password": "root",
+  "database": "car_rental"
+}
