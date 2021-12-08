@@ -26,6 +26,10 @@ class UsersRepository implements IUsersRepository {
 
     await this.repository.save(user);
   }
+
+  findByEmail(email: string): Promise<User | undefined> {
+    return this.repository.findOne({ email });
+  }
 }
 
 export { UsersRepository };
