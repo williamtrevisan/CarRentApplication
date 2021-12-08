@@ -7,22 +7,34 @@ class User {
   id?: string;
 
   @Column()
-  name: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  name: string;
 
   @Column()
-  username: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  username: string;
 
   @Column()
-  password: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  password: string;
 
   @Column()
-  email: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  email: string;
 
   @Column()
-  driver_license: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  driver_license: string;
 
   @Column()
-  admin: boolean | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  admin: boolean;
 
   @CreateDateColumn()
   created_at: Date | undefined;

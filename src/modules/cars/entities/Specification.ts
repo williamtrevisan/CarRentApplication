@@ -7,13 +7,19 @@ class Specification {
   id?: string;
 
   @Column()
-  name: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  name: string;
 
   @Column()
-  description: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  description: string;
 
   @Column()
-  created_at: Date | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  created_at: Date;
 
   constructor() {
     if (!this.id) {
