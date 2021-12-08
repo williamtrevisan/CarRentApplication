@@ -14,11 +14,6 @@ class User {
   @Column()
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  username: string;
-
-  @Column()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   password: string;
 
   @Column()
