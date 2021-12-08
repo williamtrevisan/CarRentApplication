@@ -30,6 +30,10 @@ class UsersRepository implements IUsersRepository {
   findByEmail(email: string): Promise<User | undefined> {
     return this.repository.findOne({ email });
   }
+
+  findByPk(id: string): Promise<User | undefined> {
+    return this.repository.findOne(id);
+  }
 }
 
 export { UsersRepository };
