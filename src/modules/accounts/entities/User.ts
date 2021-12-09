@@ -31,8 +31,15 @@ class User {
   // @ts-ignore
   admin: boolean;
 
+  @Column()
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  avatar: string;
+
   @CreateDateColumn()
-  created_at: Date | undefined;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  created_at: Date;
 
   constructor() {
     if (!this.id) {
