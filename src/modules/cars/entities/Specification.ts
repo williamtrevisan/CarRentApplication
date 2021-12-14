@@ -7,18 +7,12 @@ class Specification {
   id?: string;
 
   @Column()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   name: string;
 
   @Column()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   description: string;
 
   @Column()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   created_at: Date;
 
   constructor() {

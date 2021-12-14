@@ -22,7 +22,7 @@ class CategoriesRepository implements ICategoriesRepository {
     await this.repository.save(category);
   }
 
-  findByName(name: string): Promise<Category | undefined> {
+  findByName(name: string): Promise<Category> {
     return this.repository.findOne({ name });
   }
 

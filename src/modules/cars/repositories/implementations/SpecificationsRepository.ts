@@ -22,7 +22,7 @@ class SpecificationsRepository implements ISpecificationsRepository {
     await this.repository.save(specification);
   }
 
-  findByName(name: string): Promise<Specification | undefined> {
+  findByName(name: string): Promise<Specification> {
     return this.repository.findOne({ name });
   }
 }
