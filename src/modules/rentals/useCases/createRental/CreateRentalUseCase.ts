@@ -1,10 +1,9 @@
 import { inject, injectable } from "tsyringe";
 
+import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
+import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
-
-import { Rental } from "../infra/typeorm/entities/Rental";
-import { IRentalsRepository } from "../repositories/IRentalsRepository";
 
 interface IRequest {
   user_id: string;
@@ -43,9 +42,8 @@ class CreateRentalUseCase {
       throw new AppError("There's a rental in progress for user!");
     }
 
-    const dateNow = this.dateProvider.dateNow();
     const compare = this.dateProvider.compareInHours(
-      dateNow,
+      this.dateProvider.dateNow(),
       expected_return_date
     );
     if (compare < minimumHour) {
