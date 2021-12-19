@@ -33,11 +33,15 @@ class RentalsRepository implements IRentalsRepository {
   }
 
   findOpenRentalByCar(car_id: string): Promise<Rental> {
-    return this.repository.findOne({ car_id });
+    return this.repository.findOne({ 
+      where: { car_id, end_date: null },
+    });
   }
 
   findOpenRentalByUser(user_id: string): Promise<Rental> {
-    return this.repository.findOne({ user_id });
+    return this.repository.findOne({
+      where: { user_id, end_date: null },
+    });
   }
 }
 
