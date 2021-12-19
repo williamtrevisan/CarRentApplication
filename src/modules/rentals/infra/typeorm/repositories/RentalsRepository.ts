@@ -28,6 +28,10 @@ class RentalsRepository implements IRentalsRepository {
     return rental;
   }
 
+  async findByPk(id: string): Promise<Rental> {
+    return this.repository.findOne(id);
+  }
+
   findOpenRentalByCar(car_id: string): Promise<Rental> {
     return this.repository.findOne({ car_id });
   }
