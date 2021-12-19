@@ -8,7 +8,7 @@ import {
 import { Specification } from "../entities/Specification";
 
 class SpecificationsRepository implements ISpecificationsRepository {
-  private repository: Repository<Specification>;
+  private readonly repository: Repository<Specification>;
 
   constructor() {
     this.repository = getRepository(Specification);
