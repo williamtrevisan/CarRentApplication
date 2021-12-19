@@ -8,11 +8,12 @@ export class CreateSpecifications1638994959182 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "varchar",
+            type: "uuid",
+            isPrimary: true,
           },
           {
             name: "name",
-            type: "varchar"
+            type: "varchar",
           },
           {
             name: "description",
@@ -25,7 +26,7 @@ export class CreateSpecifications1638994959182 implements MigrationInterface {
           },
         ],
       })
-    )
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
