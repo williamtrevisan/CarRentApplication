@@ -7,17 +7,23 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
   rentals: Rental[] = [];
 
   async create({
+    id,
     user_id,
     car_id,
     expected_return_date,
+    end_date,
+    total,
   }: ICreateRentalDTO): Promise<Rental> {
     const rental = new Rental();
 
     Object.assign(rental, {
+      id,
       user_id,
       car_id,
       expected_return_date,
       start_date: new Date(),
+      end_date,
+      total,
     });
 
     this.rentals.push(rental);
