@@ -23,7 +23,9 @@ class SpecificationsRepository implements ISpecificationsRepository {
       description,
     });
 
-    return this.repository.save(specification);
+    await this.repository.save(specification);
+
+    return specification;
   }
 
   async findByPks(ids: string[]): Promise<Specification[]> {

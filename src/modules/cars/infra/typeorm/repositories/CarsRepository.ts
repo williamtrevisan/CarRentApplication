@@ -35,7 +35,9 @@ class CarsRepository implements ICarsRepository {
       specifications,
     });
 
-    return this.repository.save(car);
+    await this.repository.save(car);
+
+    return car;
   }
 
   async updateAvailable(id: string, available: boolean): Promise<void> {
