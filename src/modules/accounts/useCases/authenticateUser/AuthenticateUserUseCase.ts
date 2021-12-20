@@ -19,6 +19,7 @@ interface IResponse {
     email: string;
   };
   token: string;
+  refresh_token: string;
 }
 
 @injectable()
@@ -31,7 +32,7 @@ class AuthenticateUserUseCase {
     private readonly usersTokensRepository: IUsersTokensRepository,
 
     @inject("DayjsDateProvider")
-    private readonly dateProvider: IDateProvider;
+    private readonly dateProvider: IDateProvider
   ) {}
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
@@ -63,7 +64,9 @@ class AuthenticateUserUseCase {
       expiresIn: expires_in_refresh_token
     })
 
-    const expires_date = this.dateProvider.addDays(expires_in_refresh_token_days);
+    const expires_date = this.dateProvider.addDays(
+      expires_in_refresh_token_days
+    );
 
     await this.usersTokensRepository.create({
       user_id: user.id,
@@ -77,6 +80,7 @@ class AuthenticateUserUseCase {
         email: user.email,
       },
       token,
+      refresh_token
     };
   }
 }
