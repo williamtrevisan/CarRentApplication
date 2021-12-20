@@ -12,7 +12,7 @@ interface IRequest {
 class CreateCategoryUseCase {
   constructor(
     @inject("CategoriesRepository")
-    private categoriesRepository: ICategoriesRepository
+    private readonly categoriesRepository: ICategoriesRepository
   ) {}
 
   async execute({ name, description }: IRequest): Promise<void> {
