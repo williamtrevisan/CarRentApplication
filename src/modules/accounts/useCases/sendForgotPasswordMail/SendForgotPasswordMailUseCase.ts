@@ -27,7 +27,7 @@ class SendForgotPasswordMailUseCase {
     await this.usersTokensRepository.create({
       refresh_token: uuidV4(),
       user_id: user.id,
-      expires_date: this.dateProvider.dateNow()
+      expires_date: this.dateProvider.addHours(3)
     });
   }
 }
