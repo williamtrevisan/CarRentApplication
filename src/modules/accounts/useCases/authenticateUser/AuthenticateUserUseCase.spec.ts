@@ -1,29 +1,39 @@
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
+import { UsersTokensRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersTokensRepositoryInMemory";
+import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/DayjsDateProvider";
 import { AppError } from "@shared/errors/AppError";
 
 import { ICreateUserDTO } from "../../dto/ICreateUserDTO";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
+let createUserUseCase: CreateUserUseCase;
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let usersRepositoryInMemory: UsersRepositoryInMemory;
-let createUserUseCase: CreateUserUseCase;
+let usersTokensRepositoryInMemory: UsersTokensRepositoryInMemory;
+let dateProvider: DayjsDateProvider;
 
 describe("Authenticate User", () => {
   beforeEach(() => {
-    usersRepositoryInMemory = new UsersRepositoryInMemory();
-    authenticateUserUseCase = new AuthenticateUserUseCase(
-      usersRepositoryInMemory
-    );
     createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory);
+
+    usersRepositoryInMemory = new UsersRepositoryInMemory();
+    usersTokensRepositoryInMemory = new UsersTokensRepositoryInMemory();
+    dateProvider = new DayjsDateProvider();
+
+    authenticateUserUseCase = new AuthenticateUserUseCase(
+      usersRepositoryInMemory,
+      usersTokensRepositoryInMemory,
+      dateProvider
+    );
   });
 
   it("should be able to authenticate an user", async () => {
     const user: ICreateUserDTO = {
-      name: "User Test",
-      email: "user@test.com",
-      password: "1234",
-      driver_license: "000123",
+      name: "User Test2",
+      email: "user@testf.com",
+      password: "12344",
+      driver_license: "0001223",
     };
 
     await createUserUseCase.execute(user);
