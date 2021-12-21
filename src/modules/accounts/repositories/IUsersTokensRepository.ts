@@ -8,6 +8,7 @@ interface IUsersTokensRepository {
     refresh_token,
   }: ICreateUserTokenDTO): Promise<UserToken>;
   deleteByPk(id: string): Promise<void>;
+  findByRefreshToken(refresh_token: string): Promise<UserToken>;
   findByUserIdAndRefreshToken(
     user_id: string,
     refresh_token: string
