@@ -15,8 +15,6 @@ let dateProvider: DayjsDateProvider;
 
 describe("Authenticate User", () => {
   beforeEach(() => {
-    createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory);
-
     usersRepositoryInMemory = new UsersRepositoryInMemory();
     usersTokensRepositoryInMemory = new UsersTokensRepositoryInMemory();
 
@@ -27,6 +25,8 @@ describe("Authenticate User", () => {
       usersTokensRepositoryInMemory,
       dateProvider
     );
+
+    createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory);
   });
 
   it("should be able to authenticate an user", async () => {
