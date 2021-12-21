@@ -1,6 +1,7 @@
-import { AppError } from "@shared/errors/AppError";
-import { ICreateUserDTO } from "../../dto/ICreateUserDTO";
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
+import { AppError } from "@shared/errors/AppError";
+
+import { ICreateUserDTO } from "../../dto/ICreateUserDTO";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
@@ -53,7 +54,7 @@ describe("Authenticate User", () => {
     };
 
     await createUserUseCase.execute(user);
-    
+
     await expect(
       authenticateUserUseCase.execute({
         email: user.email,

@@ -1,8 +1,9 @@
+import { inject, injectable } from "tsyringe";
+
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
-import { inject, injectable } from "tsyringe";
 
 interface IRequest {
   id: string;
@@ -19,7 +20,7 @@ class DevolutionRentalUseCase {
     private readonly carsRepository: ICarsRepository,
 
     @inject("DayjsDateProvider")
-    private readonly dateProvider: IDateProvider,
+    private readonly dateProvider: IDateProvider
   ) {}
 
   async execute({ id, user_id }: IRequest): Promise<void> {
@@ -50,7 +51,7 @@ class DevolutionRentalUseCase {
     }
 
     total += daily * car.daily_rate;
-    
+
     rental.end_date = this.dateProvider.dateNow();
     rental.total = total;
 

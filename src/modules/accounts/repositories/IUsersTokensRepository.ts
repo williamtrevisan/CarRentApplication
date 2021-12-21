@@ -2,13 +2,16 @@ import { ICreateUserTokenDTO } from "../dto/ICreateUserTokenDTO";
 import { UserToken } from "../infra/typeorm/entities/UserToken";
 
 interface IUsersTokensRepository {
-  create({ 
+  create({
     user_id,
     expires_date,
-    refresh_token
+    refresh_token,
   }: ICreateUserTokenDTO): Promise<UserToken>;
   deleteByPk(id: string): Promise<void>;
-  findByUserIdAndRefreshToken(user_id: string, refresh_token: string): Promise<UserToken>;
+  findByUserIdAndRefreshToken(
+    user_id: string,
+    refresh_token: string
+  ): Promise<UserToken>;
 }
 
 export { IUsersTokensRepository };
