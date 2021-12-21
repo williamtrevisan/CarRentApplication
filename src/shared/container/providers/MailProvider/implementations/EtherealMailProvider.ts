@@ -2,7 +2,7 @@ import fs from "fs";
 import handlebars from "handlebars";
 import nodemailer, { Transporter } from "nodemailer";
 
-import { IMailProvider } from "../IMailProvider";
+import { IMailProvider, IVariables } from "../IMailProvider";
 
 class EtherealMailProvider implements IMailProvider {
   private client: Transporter;
@@ -29,7 +29,7 @@ class EtherealMailProvider implements IMailProvider {
   async sendMail(
     to: string,
     subject: string,
-    variables: any,
+    variables: IVariables,
     path: string
   ): Promise<void> {
     const templateFileContent = fs.readFileSync(path).toString("utf-8");
