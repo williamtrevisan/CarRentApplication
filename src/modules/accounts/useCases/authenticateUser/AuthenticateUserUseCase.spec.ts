@@ -19,6 +19,7 @@ describe("Authenticate User", () => {
 
     usersRepositoryInMemory = new UsersRepositoryInMemory();
     usersTokensRepositoryInMemory = new UsersTokensRepositoryInMemory();
+
     dateProvider = new DayjsDateProvider();
 
     authenticateUserUseCase = new AuthenticateUserUseCase(
@@ -39,8 +40,8 @@ describe("Authenticate User", () => {
     await createUserUseCase.execute(user);
 
     const result = await authenticateUserUseCase.execute({
-      email: user.email,
-      password: user.password,
+      email: "user@testf.com",
+      password: "12344",
     });
 
     expect(result).toHaveProperty("token");
